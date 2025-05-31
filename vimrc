@@ -55,7 +55,7 @@ set hlsearch        " turn on search higlighting
 " register, skip registers >100kb, clear search highlighting on vim start
 set viminfo='100,<1000,s100,h
 " Clear search highlighting with double escape in normal mode
-nnoremap <Esc><Esc> :nohlsearch<CR>
+nnoremap <leader><Esc> :nohlsearch<CR>
 
 
 "Open terminal window at bottom of screen with 15 rows
