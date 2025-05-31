@@ -10,10 +10,23 @@ set shiftwidth=2    " indent also with 4 spaces
 set expandtab       " expand tabs to spaces
 set textwidth=80    " wrap lines at 80 chars
 
-" configure colors
-set t_Co=256        " use 256 terminal colors
-syntax on           " turn syntax highlighting on
-colorscheme jellybeans  " set colorscheme
+" Color configuration with fallbacks
+" Always set 256 colors as baseline
+set t_Co=256
+" Enable true colors if available (this enhances the 256 color mode)
+if has('termguicolors') && $COLORTERM == 'truecolor'
+    set termguicolors
+endif
+
+
+syntax enable            " Enable syntax highlighting
+
+" Try jellybeans first, then built-in fallbacks
+try
+    colorscheme jellybeans    " Your preferred theme
+catch
+    colorscheme habamax   " Modern built-in (Vim 8.2+)
+endtry
 
 " misc options
 set showmatch       " highlight matching braces
@@ -24,10 +37,17 @@ set number          " turn line numbers on
 set wrap linebreak textwidth=0 "ensures no implicit linebreaks
 set nocp            " forget about compatibility with old version of vi
 
+set mouse=a " allows for scrolling in vim buffer
+set viminfo='100,<1000,s100,h
+
+"Open terminal window at bottom of screen with 15 rows
+nnoremap bt :bo term ++rows=15<CR>
+"Open vertical terminal to the left (can't see option to make to the right)
+nnoremap vt :vert term <CR>
+" double esc to set vim terminal to pause vim terminal
+tnoremap <Esc><Esc> <C-\><C-n>
 
 " configure shortcuts/hotkeys
 " switch between header/source with F4
 map <F4> :e %:p:s,.hh$,.X123X,:s,.cc$,.hh,:s,.X123X$,.cc,<CR>
-" goto definition with F12
-map <F12> <C-]>
 
