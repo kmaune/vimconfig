@@ -98,6 +98,7 @@ call plug#begin('~/.vim/plugged')
 " Add plugins here
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'             " Easy commenting with gc
 
 call plug#end()
 " ====================================
