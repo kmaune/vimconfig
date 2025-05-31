@@ -101,6 +101,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'             " Easy commenting with gc
 Plug 'tpope/vim-fugitive'               " Git integration
 Plug 'airblade/vim-gitgutter'           " Show git changes in gutter
+Plug 'vim-airline/vim-airline'          " Better status line
+Plug 'vim-airline/vim-airline-themes'   " Airline themes
 
 call plug#end()
 " ====================================
@@ -110,3 +112,7 @@ nnoremap <leader>sf :Files<CR>
 nnoremap <leader>sn :Buffers<CR>
 nnoremap <leader>sg :Rg<CR>
 
+" ============ AIRLINE CONFIG ============
+" disable whitepsace checks
+let g:airline#extensions#whitespace#enabled = 0
+" =======================================
