@@ -1,3 +1,6 @@
+let mapleader = " "        " Use space as leader instead of '\'
+set mouse=a         " allows for scrolling in vim buffer
+
 " configure generic file handling
 filetype on         " enable filetype detection
 filetype plugin on  " enable filetype plugins
@@ -14,6 +17,13 @@ set textwidth=80    " wrap lines at 80 chars
 set autoread
 set noswapfile
 
+" File explorer stuff
+"" Netrw settings (built-in file explorer)
+let g:netrw_banner = 0        " hide banner
+let g:netrw_liststyle = 3     " tree view
+let g:netrw_winsize = 25      " 25% width when splitting
+nnoremap <leader>e :Explore<CR>
+
 " Color configuration with fallbacks
 " Always set 256 colors as baseline
 set t_Co=256
@@ -21,7 +31,6 @@ set t_Co=256
 if has('termguicolors') && $COLORTERM == 'truecolor'
     set termguicolors
 endif
-
 
 syntax enable            " Enable syntax highlighting
 
@@ -40,10 +49,6 @@ set incsearch       " enable incremental search while typing
 set number          " turn line numbers on
 set wrap linebreak textwidth=0 "ensures no implicit linebreaks
 set nocp            " forget about compatibility with old version of vi
-
-let mapleader = " "        " Use space as leader instead of '\'
-
-set mouse=a         " allows for scrolling in vim buffer
 
 set hlsearch        " turn on search higlighting
 " viminfo config, save marks for last 100 files, save up to 1000 lines for each
