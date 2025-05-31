@@ -99,6 +99,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'             " Easy commenting with gc
+Plug 'tpope/vim-fugitive'               " Git integration
 
 call plug#end()
 " ====================================
