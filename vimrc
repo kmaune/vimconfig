@@ -73,3 +73,11 @@ map <F4> :e %:p:s,.hh$,.X123X,:s,.cc$,.hh,:s,.X123X$,.cc,<CR>
 packadd! termdebug
 let g:termdebug_wide = 1
 nnoremap gdb :TermdebugCommand<Space>
+
+" Auto-pairs for brackets (simple version without plugins)
+inoremap ( ()<Left>
+inoremap [ []<Left>
+inoremap { {}<Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
+
