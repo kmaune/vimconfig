@@ -74,7 +74,7 @@ packadd! termdebug
 let g:termdebug_wide = 1
 nnoremap gdb :TermdebugCommand<Space>
 
-" Auto-pairs for brackets (simple version without plugins)
+" Auto-pairs for brackets
 inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap { {}<Left>
