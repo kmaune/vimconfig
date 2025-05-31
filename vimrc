@@ -53,3 +53,7 @@ tnoremap <Esc><Esc> <C-\><C-n>
 " switch between header/source with F4
 map <F4> :e %:p:s,.hh$,.X123X,:s,.cc$,.hh,:s,.X123X$,.cc,<CR>
 
+" Setup Termdebug command 
+packadd! termdebug
+let g:termdebug_wide = 1
+nnoremap gdb :TermdebugCommand<Space>
