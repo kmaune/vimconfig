@@ -96,7 +96,14 @@ set listchars=tab:→\ ,trail:•,extends:…,precedes:…
 call plug#begin('~/.vim/plugged')
 
 " Add plugins here
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 " ====================================
+
+" FZF file finding keymaps
+nnoremap <leader>sf :Files<CR>
+nnoremap <leader>sn :Buffers<CR>
+nnoremap <leader>sg :Rg<CR>
 
