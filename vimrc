@@ -10,6 +10,10 @@ set shiftwidth=2    " indent also with 4 spaces
 set expandtab       " expand tabs to spaces
 set textwidth=80    " wrap lines at 80 chars
 
+"File operations
+set autoread
+set noswapfile
+
 " Color configuration with fallbacks
 " Always set 256 colors as baseline
 set t_Co=256
