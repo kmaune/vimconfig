@@ -81,3 +81,6 @@ inoremap { {}<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
 
+" Don't lose selection when indenting
+vnoremap < <gv
+vnoremap > >gv
