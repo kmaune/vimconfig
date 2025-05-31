@@ -84,3 +84,9 @@ inoremap ' ''<Left>
 " Don't lose selection when indenting
 vnoremap < <gv
 vnoremap > >gv
+"
+set cursorline "highlight current line
+
+" Show whitespace characters
+set list
+set listchars=tab:→\ ,trail:•,extends:…,precedes:…
