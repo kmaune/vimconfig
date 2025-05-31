@@ -38,6 +38,8 @@ set wrap linebreak textwidth=0 "ensures no implicit linebreaks
 set nocp            " forget about compatibility with old version of vi
 
 set mouse=a " allows for scrolling in vim buffer
+" viminfo config, save marks for last 100 files, save up to 1000 lines for each
+" register, skip registers >100kb, disable search highlighting on vim start
 set viminfo='100,<1000,s100,h
 
 "Open terminal window at bottom of screen with 15 rows
