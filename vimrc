@@ -28,19 +28,6 @@ set nocp            " forget about compatibility with old version of vi
 " configure shortcuts/hotkeys
 " switch between header/source with F4
 map <F4> :e %:p:s,.hh$,.X123X,:s,.cc$,.hh,:s,.X123X$,.cc,<CR>
-" recreate tags file with F5
-map <F5> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-" create doxygen function/method comment with F6
-map <F6> :Dox<CR>
-" create doxygen class comment with F7
-map <F7> :DoxAuthor<CR>
 " goto definition with F12
 map <F12> <C-]>
 
-" OmniCppComplete
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
