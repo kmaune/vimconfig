@@ -90,3 +90,13 @@ set cursorline "highlight current line
 " Show whitespace characters
 set list
 set listchars=tab:→\ ,trail:•,extends:…,precedes:…
+
+
+" ============ PLUGINS ============
+call plug#begin('~/.vim/plugged')
+
+" Add plugins here
+
+call plug#end()
+" ====================================
+
