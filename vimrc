@@ -75,11 +75,11 @@ let g:termdebug_wide = 1
 nnoremap gdb :TermdebugCommand<Space>
 
 " Auto-pairs for brackets
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
-inoremap " ""<Left>
-inoremap ' ''<Left>
+"inoremap ( ()<Left>
+"inoremap [ []<Left>
+"inoremap { {}<Left>
+"inoremap " ""<Left>
+"inoremap ' ''<Left>
 
 " Don't lose selection when indenting
 vnoremap < <gv
@@ -101,8 +101,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'             " Easy commenting with gc
 Plug 'tpope/vim-fugitive'               " Git integration
 Plug 'airblade/vim-gitgutter'           " Show git changes in gutter
-Plug 'vim-airline/vim-airline'          " Better status line
-Plug 'vim-airline/vim-airline-themes'   " Airline themes
+"Plug 'vim-airline/vim-airline'          " Better status line
+"Plug 'vim-airline/vim-airline-themes'   " Airline themes
 
 call plug#end()
 " ====================================
@@ -114,5 +114,5 @@ nnoremap <leader>sg :Rg<CR>
 
 " ============ AIRLINE CONFIG ============
 " disable whitepsace checks
-let g:airline#extensions#whitespace#enabled = 0
+"let g:airline#extensions#whitespace#enabled = 0
 " =======================================
