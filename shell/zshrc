@@ -26,3 +26,5 @@ export HISTFILE=~/.zsh_history  # History file location
 
 # Created by `pipx` on 2025-06-03 02:41:02
 export PATH="$PATH:/Users/kmaune/.local/bin"
+
+alias nv='nvim'
