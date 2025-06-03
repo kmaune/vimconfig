@@ -3,13 +3,27 @@
 
 echo "Setting up dotfiles..."
 
-# Vim - link the entire vim directory
+# Vim - remove existing and link the vim directory
+rm -rf ~/.vim
 ln -sf ~/dotfiles/vim ~/.vim
 echo "✓ Vim config and colors linked"
 
-# Tmux - link the entire tmux directory
+# Tmux - remove existing and link the tmux directory
+rm -rf ~/.config/tmux
 mkdir -p ~/.config
 ln -sf ~/dotfiles/tmux ~/.config/tmux
 echo "✓ Tmux config linked"
 
+# Git
+rm -f ~/.gitconfig
+ln -sf ~/dotfiles/git/gitconfig ~/.gitconfig
+echo "✓ Git config linked"
+
+# Shell configs
+rm -f ~/.zshrc ~/.bash_profile
+ln -sf ~/dotfiles/shell/zshrc ~/.zshrc
+ln -sf ~/dotfiles/shell/bash_profile ~/.bash_profile
+echo "✓ Shell configs linked"
+
 echo "Done! Your dotfiles are set up."
+echo "Note: Restart your shell or run 'source ~/.zshrc' to load shell changes"
