@@ -3,6 +3,13 @@
 
 echo "Setting up dotfiles safely..."
 
+# Initialize submodules if they exist
+if [ -f .gitmodules ]; then
+    echo "Initializing git submodules..."
+    git submodule update --init --recursive
+    echo "✓ Git submodules initialized"
+fi
+
 # Function to safely create symlinks with backup
 safe_link() {
     local source="$1"

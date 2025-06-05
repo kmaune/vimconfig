@@ -3,6 +3,13 @@
 
 echo "Setting up dotfiles..."
 
+# Initialize submodules if they exist
+if [ -f .gitmodules ]; then
+    echo "Initializing git submodules..."
+    git submodule update --init --recursive
+    echo "✓ Git submodules initialized"
+fi
+
 # Vim - remove existing and link the vim directory
 rm -rf ~/.vim
 ln -sf ~/dotfiles/vim ~/.vim
