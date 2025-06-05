@@ -3,3 +3,6 @@ autoload/plug.vim
 plugged/
 tmux/plugins/*
 !tmux/plugins/tpm
+.DS_Store
+**/.DS_Store
+*/.DS_Store
