@@ -1,0 +1,10 @@
+name: ai_env
+channels:
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - pytorch
+  - torchvision
+  - transformers
+  - jupyter
+  - matplotlib
