@@ -1,5 +1,5 @@
 #!/bin/bash
-# Safe dotfiles install script with backup functionality
+# Safe dotfiles install script with backup functionality and conda environment setup
 
 echo "Setting up dotfiles safely..."
 
@@ -43,6 +43,60 @@ echo "✓ Git config linked"
 safe_link ~/dotfiles/shell/zshrc ~/.zshrc
 safe_link ~/dotfiles/shell/bash_profile ~/.bash_profile
 echo "✓ Shell configs linked"
+
+# Conda environment setup
+setup_conda_env() {
+    echo "Setting up conda environment..."
+    
+    # Check if conda is available
+    if ! command -v conda &> /dev/null; then
+        echo "⚠️  Conda not found. Skipping environment setup."
+        echo "   Install Anaconda/Miniconda first, then run this script again."
+        return 1
+    fi
+    
+    # Look for environment files in priority order
+    if [ -f ~/dotfiles/envs/base.yml ]; then
+        ENV_FILE="~/dotfiles/envs/base.yml"
+    elif [ -f ~/dotfiles/base.yml ]; then
+        ENV_FILE="~/dotfiles/base.yml"
+    elif [ -f ~/dotfiles/envs/environment.yml ]; then
+        ENV_FILE="~/dotfiles/envs/environment.yml"
+    elif [ -f ~/dotfiles/environment.yml ]; then
+        ENV_FILE="~/dotfiles/environment.yml"
+    else
+        echo "⚠️  No environment file found. Skipping conda environment setup."
+        echo "   Create ~/dotfiles/envs/base.yml to enable automatic environment setup."
+        return 1
+    fi
+    
+    # Get environment name from the file
+    ENV_NAME=$(grep 'name:' "$ENV_FILE" | head -1 | cut -d' ' -f2)
+    
+    # Check if environment already exists
+    if conda env list | grep -q "^$ENV_NAME "; then
+        echo "📦 Environment '$ENV_NAME' already exists."
+        read -p "Would you like to update it? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            conda env update -f "$ENV_FILE"
+            echo "✓ Conda environment updated"
+        fi
+    else
+        echo "📦 Creating conda environment from $ENV_FILE..."
+        conda env create -f "$ENV_FILE"
+        echo "✓ Conda environment created"
+    fi
+    
+    echo "   Activate with: conda activate $ENV_NAME"
+}
+
+# Ask user if they want to set up conda environment
+read -p "Would you like to set up the conda environment? (y/N): " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    setup_conda_env
+fi
 
 echo "Done! Your dotfiles are set up safely."
 echo "Note: Any existing files were backed up with .backup extension"
