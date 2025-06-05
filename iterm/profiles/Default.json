@@ -143,7 +143,7 @@
     "Red Component" : 0
   },
   "Ambiguous Double Width" : false,
-  "Option Key Sends" : 1,
+  "Option Key Sends" : 2,
   "Ansi 3 Color" : {
     "Red Component" : 0.89902019500732422,
     "Color Space" : "Calibrated",
