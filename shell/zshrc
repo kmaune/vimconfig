@@ -16,8 +16,8 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# to be able to access openwebui start/stop scripts everywhere
-export PATH="$HOME/bin:$PATH"
+# to be able to access scripts everywhere
+export PATH="$HOME/bin:$HOME/bin/openwebui:$PATH"
 
 # Increase history size
 export HISTFILE=~/.zsh_history  # History file location
