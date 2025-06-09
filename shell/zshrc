@@ -16,8 +16,8 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# to be able to access scripts everywhere
-export PATH="$HOME/bin:$HOME/bin/openwebui:$PATH"
+# Add scripts from dotfiles submodule to PATH
+export PATH="$HOME/dotfiles/scripts:$HOME/dotfiles/scripts/openwebui:$PATH"
 
 # Increase history size
 export HISTFILE=~/.zsh_history  # History file location
