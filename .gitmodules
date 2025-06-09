@@ -7,3 +7,6 @@
 [submodule "tmux/themes/catppuccin"]
 	path = tmux/themes/catppuccin
 	url = https://github.com/catppuccin/tmux.git
+[submodule "scripts"]
+	path = scripts
+	url = git@github.com:kmaune/scripts.git
