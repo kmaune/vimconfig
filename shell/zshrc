@@ -20,9 +20,23 @@ unset __conda_setup
 export PATH="$HOME/bin:$PATH"
 
 # Increase history size
+export HISTFILE=~/.zsh_history  # History file location
 export HISTSIZE=100000      # Number of commands stored in memory
 export SAVEHIST=100000      # Number of commands saved to file
-export HISTFILE=~/.zsh_history  # History file location
+
+# Critical History Options:
+# These ensure history is saved correctly and shared across sessions.
+setopt APPEND_HISTORY      # Append to history file, don't overwrite
+setopt SHARE_HISTORY       # Share history among all open Zsh sessions
+setopt INC_APPEND_HISTORY  # Add new commands to history file as they are typed (very important for real-time sharing)
+setopt EXTENDED_HISTORY    # Record start and end timestamps of commands
+
+# Other useful history options (optional, but recommended for cleaner history):
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicates first when history exceeds limit
+setopt HIST_IGNORE_DUPS    # Don't record command if it was just recorded
+setopt HIST_IGNORE_SPACE   # Don't record lines starting with a space (e.g., ` history`)
+setopt HIST_NO_STORE       # Don't store the `history` command itself in history
+setopt HIST_REDUCE_BLANKS  # Remove extra blanks from history lines
 
 # Created by `pipx` on 2025-06-03 02:41:02
 export PATH="$PATH:/Users/kmaune/.local/bin"
