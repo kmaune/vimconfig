@@ -32,5 +32,12 @@ ln -sf ~/dotfiles/shell/zshrc ~/.zshrc
 ln -sf ~/dotfiles/shell/bash_profile ~/.bash_profile
 echo "✓ Shell configs linked"
 
+# Make scripts executable (if scripts submodule exists)
+if [ -d ~/dotfiles/scripts ]; then
+    echo "Making scripts executable..."
+    find ~/dotfiles/scripts -name "*.sh" -type f -exec chmod +x {} \;
+    echo "✓ Scripts made executable"
+fi
+
 echo "Done! Your dotfiles are set up."
 echo "Note: Restart your shell or run 'source ~/.zshrc' to load shell changes"

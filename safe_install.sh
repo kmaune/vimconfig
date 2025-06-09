@@ -44,6 +44,20 @@ safe_link ~/dotfiles/shell/zshrc ~/.zshrc
 safe_link ~/dotfiles/shell/bash_profile ~/.bash_profile
 echo "✓ Shell configs linked"
 
+# Make scripts executable (if scripts submodule exists)
+if [ -d ~/dotfiles/scripts ]; then
+    echo "Making scripts executable..."
+    find ~/dotfiles/scripts -name "*.sh" -type f -exec chmod +x {} \;
+    echo "✓ Scripts made executable"
+fi
+
+# Make scripts executable (if scripts submodule exists)
+if [ -d ~/dotfiles/scripts ]; then
+    echo "Making scripts executable..."
+    find ~/dotfiles/scripts -name "*.sh" -type f -exec chmod +x {} \;
+    echo "✓ Scripts made executable"
+fi
+
 # Conda environment setup
 setup_conda_env() {
     echo "Setting up conda environment..."
