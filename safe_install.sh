@@ -30,6 +30,10 @@ safe_link() {
 safe_link ~/dotfiles/vim ~/.vim
 echo "✓ Vim config and colors linked"
 
+# Neovim  
+safe_link ~/dotfiles/nvim ~/.config/nvim
+echo "✓ Neovim config linked"
+
 # Tmux
 mkdir -p ~/.config
 safe_link ~/dotfiles/tmux ~/.config/tmux

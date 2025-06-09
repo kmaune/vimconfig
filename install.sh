@@ -15,6 +15,11 @@ rm -rf ~/.vim
 ln -sf ~/dotfiles/vim ~/.vim
 echo "✓ Vim config and colors linked"
 
+# Neovim - remove existing and link the neovim directory
+rm -rf ~/.config/nvim
+ln -sf ~/dotfiles/nvim ~/.config/nvim
+echo "✓ Neovim config linked"
+
 # Tmux - remove existing and link the tmux directory
 rm -rf ~/.config/tmux
 mkdir -p ~/.config

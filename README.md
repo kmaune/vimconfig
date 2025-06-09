@@ -13,7 +13,8 @@ cd ~/dotfiles
 ## What's Included
 
 - **Shell configuration**: Enhanced zsh with custom prompt, history settings, and aliases
-- **Vim/Neovim**: Complete vim setup with plugins, color scheme, and key mappings
+- **Vim**: Complete vim setup with plugins, color scheme, and key mappings
+- **Neovim**: Modern Neovim configuration based on kickstart-modular with LSP, completion, and AI tools
 - **Tmux**: Terminal multiplexer with custom themes and key bindings
 - **Git**: Global git configuration and aliases
 - **Scripts**: Utility scripts for development workflows (as git submodule)
@@ -75,9 +76,13 @@ This repo includes two installation scripts for different use cases:
 ├── tmux/                    # Tmux configuration and themes
 │   ├── tmux.conf           # Main tmux configuration
 │   └── themes/             # Tmux color themes (git submodules)
-├── vim/                     # Vim/Neovim configuration
+├── vim/                     # Vim configuration
 │   ├── vimrc               # Vim configuration
 │   └── colors/             # Custom color schemes
+├── nvim/                    # Neovim configuration (git submodule)
+│   ├── init.lua            # Neovim entry point
+│   ├── lua/                # Lua configuration modules
+│   └── README.md           # Neovim-specific documentation
 ├── scripts/                 # Utility scripts (git submodule)
 │   ├── openwebui/          # OpenWebUI management scripts
 │   └── *.sh                # Various utility scripts
@@ -111,6 +116,36 @@ git commit -m "Update scripts submodule"
 git push
 ```
 
+## Working with Neovim Configuration
+
+The `nvim/` directory is also a git submodule, containing a fork of [kickstart-modular.nvim](https://github.com/dam9000/kickstart-modular.nvim). This setup allows you to:
+
+1. **Customize your config**: Make personal changes to Neovim configuration
+2. **Stay current with upstream**: Pull improvements from the original kickstart project
+3. **Maintain version control**: Track exactly which version of the config you're using
+
+### Updating Neovim Configuration
+
+```bash
+# Make personal changes
+cd ~/dotfiles/nvim
+vim lua/kmaune/plugins/new_plugin.lua
+git add .
+git commit -m "Add new plugin"
+git push
+
+# Pull upstream improvements (optional)
+git fetch upstream
+git merge upstream/main
+git push
+
+# Update dotfiles to reference new version
+cd ~/dotfiles
+git add nvim
+git commit -m "Update neovim config"
+git push
+```
+
 ## Conda Environments
 
 The `envs/` directory contains conda environment definitions:
@@ -141,6 +176,18 @@ To update your dotfiles and all submodules:
 cd ~/dotfiles
 git pull
 git submodule update --remote --merge
+
+# For neovim config, optionally pull upstream improvements
+cd nvim
+git fetch upstream
+git merge upstream/main  # if you want latest kickstart improvements
+git push origin main
+
+cd ..
+git add nvim  # update the submodule reference
+git commit -m "Update neovim config with upstream changes"
+git push
+
 ./safe_install.sh  # Re-run if needed
 ```
 
