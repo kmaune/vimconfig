@@ -10,3 +10,6 @@
 [submodule "scripts"]
 	path = scripts
 	url = git@github.com:kmaune/scripts.git
+[submodule "nvim"]
+	path = nvim
+	url = git@github.com:kmaune/neovim_modular.git
