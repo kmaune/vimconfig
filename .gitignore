@@ -7,3 +7,14 @@ tmux/plugins/*
 **/.DS_Store
 */.DS_Store
 ssh/sshd_config.d/999-local.conf
+
+# SSH Security - Never commit private keys or sensitive configs
+ssh/sshd_config.d/999-local.conf
+ssh/known_hosts
+ssh/*_key
+ssh/id_*
+!ssh/*.pub
+**/*_key
+**/id_*
+!**/*.pub
+*.pem
