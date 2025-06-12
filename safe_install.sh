@@ -64,6 +64,37 @@ if [ -d ~/dotfiles/scripts ]; then
     echo "✓ Scripts made executable"
 fi
 
+# Make homebrew script executable
+if [ -f ~/dotfiles/homebrew/backup_brew.sh ]; then
+    chmod +x ~/dotfiles/homebrew/backup_brew.sh
+    echo "✓ Homebrew script made executable"
+fi
+
+# Homebrew setup
+setup_homebrew() {
+    echo "Setting up Homebrew packages..."
+    
+    if ! command -v brew &> /dev/null; then
+        echo "⚠️  Homebrew not found. Install it first:"
+        echo "   /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
+        return 1
+    fi
+    
+    if [ -f ~/dotfiles/homebrew/Brewfile ]; then
+        echo "📦 Found Brewfile. Installing packages..."
+        ~/dotfiles/homebrew/backup_brew.sh install
+    else
+        echo "📦 No Brewfile found. You can create one with:"
+        echo "   ~/dotfiles/homebrew/backup_brew.sh export"
+        
+        read -p "Would you like to create a personal Brewfile template? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            ~/dotfiles/homebrew/backup_brew.sh personal
+        fi
+    fi
+}
+
 # Conda environment setup
 setup_conda_env() {
     echo "Setting up conda environment..."
@@ -116,6 +147,13 @@ read -p "Would you like to set up the conda environment? (y/N): " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     setup_conda_env
+fi
+
+# Ask user if they want to set up Homebrew packages
+read -p "Would you like to set up Homebrew packages? (y/N): " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    setup_homebrew
 fi
 
 echo "Done! Your dotfiles are set up safely."

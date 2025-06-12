@@ -1,0 +1,30 @@
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Cross-platform make
+brew "cmake"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GNU debugger
+brew "gdb"
+# Improved top (interactive process viewer)
+brew "htop"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Platform built on V8 to build network applications
+brew "node"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Terminal multiplexer
+brew "tmux"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Mesh VPN based on WireGuard
+cask "tailscale"
+vscode "ms-vscode.cmake-tools"
+vscode "ms-vscode.cpptools"
+vscode "ms-vscode.cpptools-extension-pack"
+vscode "ms-vscode.cpptools-themes"
