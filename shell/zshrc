@@ -45,7 +45,3 @@ alias nv='nvim'
 
 # Homebrew management aliases for convenience  
 alias brew-backup='~/dotfiles/homebrew/backup_brew.sh'
-# alias brewup='~/dotfiles/homebrew/backup_brew.sh update'
-# alias brewex='~/dotfiles/homebrew/backup_brew.sh export' 
-# alias brewst='~/dotfiles/homebrew/backup_brew.sh status'
-# alias brewcl='~/dotfiles/homebrew/backup_brew.sh cleanup'
