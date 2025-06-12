@@ -37,6 +37,15 @@ ln -sf ~/dotfiles/shell/zshrc ~/.zshrc
 ln -sf ~/dotfiles/shell/bash_profile ~/.bash_profile
 echo "✓ Shell configs linked"
 
+# SSH configuration
+if [ -f ~/dotfiles/ssh/setup_ssh.sh ]; then
+    read -p "Would you like to set up SSH configuration? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        ~/dotfiles/ssh/setup_ssh.sh
+    fi
+fi
+
 # Make scripts executable (if scripts submodule exists)
 if [ -d ~/dotfiles/scripts ]; then
     echo "Making scripts executable..."

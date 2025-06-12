@@ -6,3 +6,4 @@ tmux/plugins/*
 .DS_Store
 **/.DS_Store
 */.DS_Store
+ssh/sshd_config.d/999-local.conf

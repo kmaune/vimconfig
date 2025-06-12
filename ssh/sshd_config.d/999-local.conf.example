@@ -1,0 +1,8 @@
+# Local customizations - copy to 999-local.conf and customize
+# This file should be git-ignored for security
+
+# Replace with your actual username
+AllowUsers kmaune
+
+# Uncomment and replace with your Tailscale IP when ready for network restriction
+# ListenAddress 100.x.x.x
