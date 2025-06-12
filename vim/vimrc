@@ -1,3 +1,6 @@
+let mapleader = " "        " Use space as leader instead of '\'
+set mouse=a         " allows for scrolling in vim buffer
+
 " configure generic file handling
 filetype on         " enable filetype detection
 filetype plugin on  " enable filetype plugins
@@ -10,6 +13,17 @@ set shiftwidth=2    " indent also with 4 spaces
 set expandtab       " expand tabs to spaces
 set textwidth=80    " wrap lines at 80 chars
 
+"File operations
+set autoread
+set noswapfile
+
+" File explorer stuff
+"" Netrw settings (built-in file explorer)
+let g:netrw_banner = 0        " hide banner
+let g:netrw_liststyle = 3     " tree view
+let g:netrw_winsize = 25      " 25% width when splitting
+nnoremap <leader>e :Explore<CR>
+
 " Color configuration with fallbacks
 " Always set 256 colors as baseline
 set t_Co=256
@@ -17,7 +31,6 @@ set t_Co=256
 if has('termguicolors') && $COLORTERM == 'truecolor'
     set termguicolors
 endif
-
 
 syntax enable            " Enable syntax highlighting
 
@@ -37,8 +50,13 @@ set number          " turn line numbers on
 set wrap linebreak textwidth=0 "ensures no implicit linebreaks
 set nocp            " forget about compatibility with old version of vi
 
-set mouse=a " allows for scrolling in vim buffer
+set hlsearch        " turn on search higlighting
+" viminfo config, save marks for last 100 files, save up to 1000 lines for each
+" register, skip registers >100kb, clear search highlighting on vim start
 set viminfo='100,<1000,s100,h
+" Clear search highlighting with double escape in normal mode
+nnoremap <leader><Esc> :nohlsearch<CR>
+
 
 "Open terminal window at bottom of screen with 15 rows
 nnoremap bt :bo term ++rows=15<CR>
@@ -51,3 +69,50 @@ tnoremap <Esc><Esc> <C-\><C-n>
 " switch between header/source with F4
 map <F4> :e %:p:s,.hh$,.X123X,:s,.cc$,.hh,:s,.X123X$,.cc,<CR>
 
+" Setup Termdebug command 
+packadd! termdebug
+let g:termdebug_wide = 1
+nnoremap gdb :TermdebugCommand<Space>
+
+" Auto-pairs for brackets
+"inoremap ( ()<Left>
+"inoremap [ []<Left>
+"inoremap { {}<Left>
+"inoremap " ""<Left>
+"inoremap ' ''<Left>
+
+" Don't lose selection when indenting
+vnoremap < <gv
+vnoremap > >gv
+"
+set cursorline "highlight current line
+
+" Show whitespace characters
+set list
+set listchars=tab:→\ ,trail:•,extends:…,precedes:…
+
+
+" ============ PLUGINS ============
+call plug#begin('~/.vim/plugged')
+
+" Add plugins here
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'             " Easy commenting with gc
+Plug 'tpope/vim-fugitive'               " Git integration
+Plug 'airblade/vim-gitgutter'           " Show git changes in gutter
+"Plug 'vim-airline/vim-airline'          " Better status line
+"Plug 'vim-airline/vim-airline-themes'   " Airline themes
+
+call plug#end()
+" ====================================
+
+" FZF file finding keymaps
+nnoremap <leader>sf :Files<CR>
+nnoremap <leader>sn :Buffers<CR>
+nnoremap <leader>sg :Rg<CR>
+
+" ============ AIRLINE CONFIG ============
+" disable whitepsace checks
+"let g:airline#extensions#whitespace#enabled = 0
+" =======================================
