@@ -87,9 +87,14 @@ vnoremap > >gv
 "
 set cursorline "highlight current line
 
-" Show whitespace characters
-set list
-set listchars=tab:→\ ,trail:•,extends:…,precedes:…
+" Show whitespace characters with fallback
+try
+    set list
+    set listchars=tab:→\ ,trail:•,extends:…,precedes:…
+catch
+    " If Unicode characters cause issues, disable list entirely
+    set nolist
+endtry
 
 
 " ============ PLUGINS ============
