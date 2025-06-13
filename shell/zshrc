@@ -45,3 +45,5 @@ alias nv='nvim'
 
 # Homebrew management aliases for convenience  
 alias brew-backup='~/dotfiles/homebrew/backup_brew.sh'
+# Mac power management (private script)
+alias mac-power='~/dotfiles/scripts/_mac-power.sh'
