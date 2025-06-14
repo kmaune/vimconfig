@@ -17,6 +17,7 @@ cd ~/dotfiles
 - **Neovim**: Modern Neovim configuration based on kickstart-modular with LSP, completion, and AI tools
 - **Tmux**: Terminal multiplexer with custom themes and key bindings
 - **Git**: Global git configuration and aliases
+- **Aider**: AI pair programming assistant with hybrid local/cloud model support
 - **Scripts**: Utility scripts for development workflows (as git submodule)
 - **Conda environments**: Predefined environments for development work
 - **Homebrew packages**: System package management with backup/restore functionality
@@ -66,6 +67,11 @@ This repo includes two installation scripts for different use cases:
 
 ```
 ~/dotfiles/
+├── aider/                   # Aider AI coding assistant configuration
+│   ├── aider.conf.yml      # Main Aider configuration
+│   ├── aiderignore         # Files/patterns for Aider to ignore
+│   ├── setup_aider.sh      # Aider setup script
+│   └── README.md           # Aider-specific documentation
 ├── envs/                    # Conda environment definitions
 │   ├── ai_env.yml          # AI/ML development environment
 │   ├── base.yml            # Base development environment
@@ -102,6 +108,33 @@ This repo includes two installation scripts for different use cases:
 ├── safe_install.sh         # Safe installation script (recommended)
 └── README.md               # This file
 ```
+
+## Aider AI Coding Assistant
+
+The `aider/` directory provides a complete AI pair programming setup with hybrid local/cloud model support:
+
+- **Local Ollama models**: Fast, private models for routine development
+- **Cloud OpenRouter models**: Reliable models for when local ones struggle
+- **Smart aliases**: Easy switching between different model types
+- **Security-conscious**: Sensitive files automatically ignored
+
+### Quick Start with Aider
+
+```bash
+# Fast local model for exploration
+aider-quick
+
+# Reliable cloud model when local struggles  
+aider-deepseek
+
+# Advanced reasoning for complex problems
+aider-r1
+
+# See all available models
+aider-models
+```
+
+For detailed Aider configuration and usage, see `aider/README.md`.
 
 ## Working with Scripts
 
@@ -275,7 +308,21 @@ git push
    ./safe_install.sh
    ```
 
-4. **Customize personal settings**:
+4. **Set up Aider (optional)**:
+   ```bash
+   # Install Aider
+   pip install aider-chat
+   
+   # Install Ollama for local models
+   brew install ollama
+   ollama pull qwen2.5-coder:7b
+   ollama pull qwen2.5-coder:32b
+   
+   # For cloud models, get OpenRouter API key and set:
+   export OPENROUTER_API_KEY="your-key-here"
+   ```
+
+5. **Customize personal settings**:
    ```bash
    # Add personal Homebrew packages
    ./homebrew/backup_brew.sh personal
@@ -331,6 +378,7 @@ git submodule update --init --recursive
 find ~/dotfiles/scripts -name "*.sh" -type f -exec chmod +x {} \;
 find ~/dotfiles/homebrew -name "*.sh" -type f -exec chmod +x {} \;
 find ~/dotfiles/ssh -name "*.sh" -type f -exec chmod +x {} \;
+find ~/dotfiles/aider -name "*.sh" -type f -exec chmod +x {} \;
 ```
 
 ### Homebrew issues
@@ -340,6 +388,18 @@ find ~/dotfiles/ssh -name "*.sh" -type f -exec chmod +x {} \;
 
 # Clean up Homebrew
 ~/dotfiles/homebrew/backup_brew.sh cleanup
+```
+
+### Aider issues
+```bash
+# Check available local models
+ollama list
+
+# Test cloud model connection
+aider-deepseek --message "Hello, test message"
+
+# See available aider configurations
+aider-models
 ```
 
 ### Path not updated
