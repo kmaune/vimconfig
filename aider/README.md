@@ -15,7 +15,7 @@ Aider is an AI pair programming tool that works with your local git repositories
 
 - `aider.conf.yml` - Main configuration (linked to `~/.aider.conf.yml`)
 - `aiderignore` - Files/patterns for Aider to ignore (linked to `~/.aiderignore`)
-- `setup_aider.sh` - Setup script for installation
+- `aider_setup.sh` - Setup script for installation
 - `README.md` - This documentation
 
 ## Model Selection Strategy
@@ -170,7 +170,7 @@ aider-deepseek --message "Hello, test message"
 ls -la ~/.aider.conf.yml
 
 # Re-run setup if needed
-~/dotfiles/aider/setup_aider.sh
+~/dotfiles/aider/aider_setup.sh
 ```
 
 ### Performance issues

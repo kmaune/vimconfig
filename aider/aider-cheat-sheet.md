@@ -21,10 +21,16 @@ aider --dry-run                    # Preview changes without applying
 
 ### Your Custom Aliases
 ```bash
+# Local Ollama models
 aider           # Default 14b model (balanced)
 aider-quick     # 7b model (fast responses)
 aider-heavy     # 32b model (complex tasks)
 aider-alt       # devstral model (alternative)
+
+# Cloud OpenRouter models (free tier)
+aider-deepseek  # DeepSeek Chat (reliable)
+aider-r1        # DeepSeek R1 (reasoning)
+aider-qwen      # Qwen Coder 32B (high quality)
 ```
 
 ## 🎛️ In-Session Commands
