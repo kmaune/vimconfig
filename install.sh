@@ -46,6 +46,12 @@ if [ -f ~/dotfiles/ssh/setup_ssh.sh ]; then
     fi
 fi
 
+# Aider AI Assistant setup
+if [ -f ~/dotfiles/aider/setup_aider.sh ]; then
+    chmod +x ~/dotfiles/aider/setup_aider.sh
+    ~/dotfiles/aider/setup_aider.sh
+fi
+
 # Make scripts executable (if scripts submodule exists)
 if [ -d ~/dotfiles/scripts ]; then
     echo "Making scripts executable..."

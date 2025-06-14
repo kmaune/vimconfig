@@ -1,0 +1,15 @@
+# Default model for quick tasks
+model: ollama/qwen2.5-coder:14b
+
+# Disable model warnings
+show-model-warnings: false
+
+# Git integration - testing mode (change to true later)
+auto-commits: false
+attribute-author: true
+
+# Performance settings
+map-tokens: 1024
+
+# Formatting integration with Neovim
+auto-lint: true

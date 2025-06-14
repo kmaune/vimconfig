@@ -1,0 +1,23 @@
+# SSH Security - Never let Aider access private keys or sensitive configs
+ssh/*_key
+ssh/id_*
+ssh/sshd_config.d/999-local.conf
+*.pem
+
+# Personal/Private configs
+homebrew/Brewfile.personal
+homebrew/Brewfile.backup.*
+
+# Build artifacts and dependencies
+**/.git/
+**/node_modules/
+**/__pycache__/
+**/.DS_Store
+**/lazy-lock.json
+
+# Large binary files
+**/*.png
+**/*.jpg
+**/*.pdf
+**/*.dmg
+

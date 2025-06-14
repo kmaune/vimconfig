@@ -47,3 +47,12 @@ alias nv='nvim'
 alias brew-backup='~/dotfiles/homebrew/backup_brew.sh'
 # Mac power management (private script)
 alias mac-power='~/dotfiles/scripts/_mac_power.sh'
+
+# Aider AI coding assistant aliases
+alias aider-quick='aider --model ollama/qwen2.5-coder:7b'
+alias aider-heavy='aider --model ollama/qwen2.5-coder:32b' 
+alias aider-alt='aider --model ollama/devstral'
+
+# Aider utility aliases
+alias aider-config='nvim ~/dotfiles/aider/.aider.conf.yml'
+alias aider-ignore='nvim ~/dotfiles/aider/.aiderignore'
