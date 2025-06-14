@@ -13,3 +13,7 @@ map-tokens: 1024
 
 # Formatting integration with Neovim
 auto-lint: true
+
+# Automatically include related files without asking
+# use aider --no-auto-add to manually disable 
+auto-add: true

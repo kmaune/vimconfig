@@ -110,6 +110,13 @@ To modify Aider behavior:
 - Keep commits small and focused for easier review
 - Use `--dry-run` flag to preview changes without applying them
 
+### File Management Tips
+
+- **Include related files from start**: `aider file.cpp file.hpp` to avoid repeated prompts
+- **Include multiple files**: `aider *.{cpp,hpp}` for broader context
+- **Override auto-add**: Use `--no-auto-add` when you want to work on just one file
+- **Auto-add setting**: Set `auto-add: true` in config to automatically include related files
+
 ## Troubleshooting
 
 ### Model not found
