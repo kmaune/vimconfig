@@ -56,3 +56,7 @@ alias aider-alt='aider --model ollama/devstral'
 # Aider utility aliases
 alias aider-config='nvim ~/dotfiles/aider/.aider.conf.yml'
 alias aider-ignore='nvim ~/dotfiles/aider/.aiderignore'
+
+# Force Aider to use more terminal-friendly colors
+export FORCE_COLOR=0
+export NO_COLOR=1
