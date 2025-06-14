@@ -53,6 +53,23 @@ alias aider-quick='aider --model ollama/qwen2.5-coder:7b'
 alias aider-heavy='aider --model ollama/qwen2.5-coder:32b' 
 alias aider-alt='aider --model ollama/devstral'
 
+# Free OpenRouter models alias
+alias aider-deepseek='aider --model openrouter/deepseek/deepseek-chat:free'
+alias aider-r1='aider --model openrouter/deepseek/deepseek-r1:free'
+alias aider-qwen='aider --model openrouter/qwen/qwen-2.5-coder-32b-instruct:free'
+
+# Helper function to show available models
+aider-models() {
+    echo "Available aider configurations:"
+    echo "  aider-quick     - Local 7B (fast)"
+    echo "  aider-heavy     - Local 32B (thorough)"
+    echo "  aider-alt       - Local Devstral 24B"
+    echo "  aider-deepseek  - DeepSeek Chat (free, fast)"
+    echo "  aider-r1        - DeepSeek R1 (free, reasoning)"
+    echo "  aider-qwen      - OpenRouter QwenCoder (32B, free)"
+}
+
+
 # Aider utility aliases
 alias aider-config='nvim ~/dotfiles/aider/.aider.conf.yml'
 alias aider-ignore='nvim ~/dotfiles/aider/.aiderignore'
@@ -60,3 +77,4 @@ alias aider-ignore='nvim ~/dotfiles/aider/.aiderignore'
 # Force Aider to use more terminal-friendly colors
 export FORCE_COLOR=0
 export NO_COLOR=1
+

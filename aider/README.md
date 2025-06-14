@@ -5,10 +5,11 @@ This directory contains Aider AI coding assistant configuration for the dotfiles
 ## Overview
 
 Aider is an AI pair programming tool that works with your local git repositories. This setup provides:
-- **Flexible model selection** with easy switching between Ollama models
+- **Flexible model selection** with easy switching between local Ollama and cloud OpenRouter models
 - **Dotfiles integration** that respects your existing development workflow  
 - **Security-conscious defaults** that protect sensitive files
 - **Shell aliases** for quick model switching
+- **Hybrid local/cloud approach** for optimal performance and reliability
 
 ## Configuration Files
 
@@ -19,32 +20,58 @@ Aider is an AI pair programming tool that works with your local git repositories
 
 ## Model Selection Strategy
 
-With 48GB RAM, you can choose the right model for the task:
+### Local Models (Ollama)
+With 48GB RAM, you can choose the right local model for the task:
 
 - **qwen2.5-coder:7b** - Quick tasks, fast responses
-- **qwen2.5-coder:14b** - Default balanced option
 - **qwen2.5-coder:32b** - Complex tasks, best quality
-- **devstral** - Alternative coding model
+- **devstral:24b** - Alternative coding model
+
+### Cloud Models (OpenRouter - Free Tier)
+For enhanced reliability when local models struggle:
+
+- **deepseek-chat** - Fast, reliable cloud model for general coding
+- **deepseek-r1** - Advanced reasoning model for complex problems
+- **qwen-2.5-coder-32b** - High-quality coding model equivalent to local 32B
 
 ## Shell Aliases
 
 The following aliases are available (added to your zshrc):
 
 ```bash
-# Basic Aider with default 14b model
-aider
+# Local Ollama models
+aider                # Default 14b model
+aider-quick         # 7b model (fast)
+aider-heavy         # 32b model (thorough)
+aider-alt           # Devstral 24b (alternative)
 
-# Quick tasks with 7b model  
-aider-quick
+# Cloud OpenRouter models (free tier)
+aider-deepseek      # DeepSeek Chat (reliable)
+aider-r1            # DeepSeek R1 (reasoning)
+aider-qwen          # Qwen Coder 32B (high quality)
 
-# Complex tasks with 32b model
-aider-heavy
-
-# Alternative model
-aider-alt
+# Utility
+aider-models        # Show all available configurations
+aider-config        # Edit main config file
+aider-ignore        # Edit ignore patterns
 ```
 
 ## Usage Examples
+
+### Recommended Workflow
+```bash
+# Start with fast local model for exploration
+aider-quick
+
+# Escalate to cloud when local model struggles
+> /model openrouter/deepseek/deepseek-chat:free
+
+# Or start directly with reliable cloud model
+aider-deepseek
+
+# Use reasoning model for complex architectural decisions
+aider-r1
+```
 
 ### Basic Usage
 ```bash
@@ -58,16 +85,16 @@ aider src/main.py README.md
 aider-heavy --message "Refactor this entire module for better performance"
 ```
 
-### Model Switching
+### Model Switching Mid-Session
 ```bash
-# Quick bug fix
-aider-quick --message "Fix the typo in the function name"
+# Switch to cloud model when local struggles
+> /model openrouter/deepseek/deepseek-chat:free
 
-# Complex architectural changes  
-aider-heavy --message "Redesign this API to be more RESTful"
+# Switch to reasoning model for complex problems
+> /model openrouter/deepseek/deepseek-r1:free
 
-# Try alternative model
-aider-alt --message "Help me understand this complex algorithm"
+# Switch back to local for simple tasks
+> /model ollama/qwen2.5-coder:7b
 ```
 
 ## Integration with Development Workflow
@@ -76,7 +103,7 @@ aider-alt --message "Help me understand this complex algorithm"
 Run Aider in one tmux pane while editing in Neovim in another:
 ```bash
 # In one pane
-aider
+aider-deepseek
 
 # In another pane  
 nvim src/
@@ -92,7 +119,8 @@ Aider integrates with your git workflow:
 
 - **Private keys and sensitive configs** are ignored via `aiderignore`
 - **Personal package lists** (Brewfile.personal) are protected
-- **Local-only** - works with your local Ollama models, no data sent to external services
+- **Hybrid approach** - local models for private work, cloud models when needed
+- **API keys** managed via environment variables (not stored in dotfiles)
 
 ## Configuration Updates
 
@@ -104,21 +132,36 @@ To modify Aider behavior:
 
 ## Tips
 
-- Start with the default 14b model and switch as needed
-- Use `aider-quick` for simple changes to save time
-- Use `aider-heavy` for complex refactoring or when you need the best quality
+### Model Selection Strategy
+- **Start local**: Use `aider-quick` or `aider` for initial exploration
+- **Escalate to cloud**: Switch to `aider-deepseek` when local models struggle with function calling
+- **Use reasoning**: Try `aider-r1` for complex architectural decisions or debugging
+- **High quality**: Use `aider-qwen` or `aider-heavy` for complex refactoring
+
+### Best Practices
 - Keep commits small and focused for easier review
 - Use `--dry-run` flag to preview changes without applying them
+- Use `aider-models` to remind yourself of available options
+- Switch models mid-session based on task complexity
 
 ## Troubleshooting
 
-### Model not found
+### Local Models
 ```bash
 # Check available models
 ollama list
 
 # Pull missing model
 ollama pull qwen2.5-coder:14b
+```
+
+### Cloud Models
+```bash
+# Verify API key is set
+echo $OPENROUTER_API_KEY
+
+# Test connection
+aider-deepseek --message "Hello, test message"
 ```
 
 ### Configuration not loading
@@ -131,8 +174,17 @@ ls -la ~/.aider.conf.yml
 ```
 
 ### Performance issues
-- Use smaller model (7b) for simple tasks
+- Use smaller local model (7b) for simple tasks
 - Check available RAM with `htop`
 - Close other resource-intensive applications
+- Switch to cloud models if local performance is poor
 
-This setup provides a powerful, secure, and integrated AI coding assistant that scales with your development needs.
+## OpenRouter Setup
+
+To use the cloud models, you need an OpenRouter API key:
+
+1. **Get API key**: Sign up at [openrouter.ai](https://openrouter.ai) (free tier available)
+2. **Set environment variable**: `export OPENROUTER_API_KEY="your-key-here"`
+3. **Test**: Run `aider-deepseek` to verify connection
+
+This setup provides a powerful, secure, and integrated AI coding assistant that scales from fast local models to reliable cloud models based on your needs.
